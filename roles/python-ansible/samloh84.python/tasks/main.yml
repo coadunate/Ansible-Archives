@@ -1,0 +1,118 @@
+- set_fact:
+    download_dir: "{{ role_path }}/files"
+    tmp_dir: "{{ tmp_prefix }}/python-{{ python_version }}"
+    python_dir: "{{ urls[python_version].source.dir }}"
+    python_url: "{{ urls[python_version].source.url }}"
+    python_hash: "{{ urls[python_version].source.hash }}"
+    python_filename: "{{ urls[python_version].source.file }}"
+    python_major_version: "{{ python_version | regex_replace('^(\\d+)\\.(\\d+)\\.(\\d+[a-zA-Z0-9]*)', '\\1') }}"
+
+- set_fact:
+    python_home: "{{ prefix }}/{{ python_dir }}"
+    python_archive_temp_path: "{{ tmp_dir }}/{{ python_filename }}"
+    python_archive_download_path: "{{ download_dir }}/{{ python_filename }}"
+    python_temp_path: "{{ tmp_dir }}/{{ python_dir }}"
+
+- debug:
+    msg: "{{ python_major_version }}"
+
+- name: "Install Python Dependencies"
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - openssl-devel
+    - bzip2-devel
+    - zlib-devel
+    - sqlite-devel
+    - readline-devel
+    - gdbm-devel
+  become: true
+  become_user: root
+
+- name: "Create Directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  become: true
+  become_user: root
+  with_items:
+    - "{{ tmp_dir }}"
+    - "{{ python_home }}"
+
+- name: "Install GCC C++"
+  yum:
+    name: "gcc-c++"
+    state: present
+  become: true
+  become_user: root
+- name: "Create Download Directory on control server: {{ download_dir }}"
+  delegate_to: 127.0.0.1
+  become: true
+  become_user: root
+  file:
+    path: "{{ download_dir }}"
+    state: directory
+
+- name: "Download Python archive to control server Download Path: {{ python_archive_download_path }}"
+  delegate_to: 127.0.0.1
+  get_url:
+    url: "{{ python_url }}"
+    dest: "{{ python_archive_download_path }}"
+    checksum: "sha256:{{ python_hash }}"
+
+- name: "Copy Python archive to Temporary Path: {{ python_archive_temp_path }}"
+  copy:
+    src: "{{ python_archive_download_path }}"
+    dest: "{{ python_archive_temp_path }}"
+
+- name: "Extract Python archive to Directory: {{ tmp_dir }}"
+  unarchive:
+    src: "{{ python_archive_temp_path }}"
+    dest: "{{ tmp_dir }}"
+    remote_src: yes
+
+- name: "Compile Python"
+  shell: "./configure  --prefix {{ python_home }}"
+  args:
+    executable: /bin/bash
+    chdir: "{{ python_temp_path }}"
+
+- shell: "make"
+  args:
+    executable: /bin/bash
+    chdir: "{{ python_temp_path }}"
+
+- shell: "make install"
+  args:
+    executable: /bin/bash
+    chdir: "{{ python_temp_path }}"
+
+- name: "Install Python environment variables"
+  template:
+    src: "python.sh.j2"
+    dest: "/etc/profile.d/python{{ python_major_version }}.sh"
+    mode: 0644
+
+- name: "Upgrade Pip"
+  shell: "source /etc/profile.d/python{{ python_major_version }}.sh && python{{python_major_version}} -m ensurepip && pip{{ python_major_version }} install -U pip"
+  args:
+    executable: /bin/bash
+
+- name: "Clean Temporary files"
+  file:
+    path: "{{ tmp_prefix }}"
+    state: absent
+
+- name: "Fix Permissions"
+  shell: "{{ item }}"
+  become: true
+  become_user: root
+  args:
+    executable: /bin/bash
+  with_items:
+    - "chown -R root:root {{ python_home }}"
+    - "find {{ python_home }} -perm -u+r -exec chmod a+r {} \\;"
+    - "find {{ python_home }} -perm -u+w -exec chmod a+w {} \\;"
+    - "find {{ python_home }} -perm -u+x -exec chmod a+x {} \\;"
