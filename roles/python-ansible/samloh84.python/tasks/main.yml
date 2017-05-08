@@ -48,15 +48,13 @@
   become: true
   become_user: root
 - name: "Create Download Directory on control server: {{ download_dir }}"
-  delegate_to: 127.0.0.1
   become: true
   become_user: root
   file:
     path: "{{ download_dir }}"
     state: directory
 
-- name: "Download Python archive to control server Download Path: {{ python_archive_download_path }}"
-  delegate_to: 127.0.0.1
+- name: "Download Python archive to control server Download Path: {{ python_archive_download_path }}" 
   get_url:
     url: "{{ python_url }}"
     dest: "{{ python_archive_download_path }}"
