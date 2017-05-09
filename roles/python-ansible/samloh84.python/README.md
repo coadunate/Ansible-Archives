@@ -21,6 +21,13 @@ Available versions:
 Set the ```prefix``` parameter to install somewhere other than ```opt/python```
 
         prefix: "opt/python"
+        
+
+Change Log
+-------
+
+- Made the role download the source file onto the remote instead of the local machine, hence eliminating the need for sudo password.
+
 
 License
 -------
