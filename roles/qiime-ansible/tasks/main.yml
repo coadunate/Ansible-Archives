@@ -1,0 +1,27 @@
+---
+# tasks file for qiime-ansible
+- name: Make sure python-qt4 is present
+  yum: 
+    name: python-qt4 
+    state: present
+
+- name: Make sure burrito is present
+  pip:
+    name: burrito
+    state: present
+
+- name: Remove existing environment  
+  command: "/home/centos/miniconda/bin/conda remove --name qiime1 --all"
+  ignore_errors: yes
+
+- name: Create QIIME environment and install QIIME
+  command: "/home/centos/miniconda/bin/conda create -n qiime1 python=2.7 qiime matplotlib=1.4.3 mock nose -c bioconda "
+
+- name: Activate QIIME environment
+  shell: "source /home/centos/miniconda/bin/activate qiime1"
+
+- name: Test QIIME installation
+  shell: "/home/centos/miniconda/envs/qiime1/bin/print_qiime_config.py -t"
+
+- name: Exit virtual environment
+  shell: "source /home/centos/miniconda/bin/deactivate"
