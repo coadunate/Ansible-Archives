@@ -1,10 +1,9 @@
 ---
 galaxy_info:
-  author: Robin Andeer
+  author: Coadunate Organization
   description: >
-    Install Miniconda and create conda environments with packages installed.
-  company: SciLifeLab Clinical Genomics
-  license: MIT
+    Install Miniconda
+  license:
   min_ansible_version: 1.4
 
   # Below are all platforms currently available. Just uncomment

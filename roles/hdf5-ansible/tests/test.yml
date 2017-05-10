@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - qiime-ansible
+    - hdf5-ansible
