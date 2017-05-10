@@ -1,7 +1,7 @@
 Role Name
 =========
 
-This role install Mothur by Dr. Patrick Schloss
+This role installs Mothur by Dr. Patrick Schloss
 
 Requirements
 ------------
@@ -25,7 +25,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: tayabsoomro.mothur }
+         - { role: coadunate.mothur }
 
 License
 -------
