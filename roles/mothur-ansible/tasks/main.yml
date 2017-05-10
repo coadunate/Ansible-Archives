@@ -1,0 +1,22 @@
+---
+# tasks file for ansible-role-mothur
+
+
+- name: Download Mothur
+  get_url:
+      url: http://homepage.usask.ca/mts066/mothur.zip
+      dest: /home/centos
+      mode: u+rwx
+
+
+- name: Unarchive Mothur
+  unarchive:
+      src: /home/centos/mothur.zip
+      dest: /home/centos
+      remote_src: true
+
+
+- name: Install Mothur
+  command: make
+  args:
+      chdir: /home/centos/mothur
