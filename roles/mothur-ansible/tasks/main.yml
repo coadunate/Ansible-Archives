@@ -1,0 +1,37 @@
+---
+# tasks file for ansible-role-mothur
+
+- name: Download Mothur
+  get_url:
+      url: https://github.com/mothur/mothur/archive/v1.39.5.tar.gz
+      dest: /home/centos
+      mode: u+rwx
+
+
+  # Unarchieve the folder into some sort of bin
+- name: Unarchive Mothur
+  unarchive:
+      src: /home/centos/mothur-1.39.5.tar.gz
+      dest: /home/centos
+      remote_src: true
+
+
+- name: Download Boost
+  get_url:
+      url: https://dl.bintray.com/boostorg/release/0.64.0/source/boost_1_64_0.tar.bz2
+      dest: /home/centos/mothur-1.39.5/
+      mode: u+rwx
+
+
+- name: Unarchive Boost
+  unarchive:
+      src: /home/centos/mothur-1.39.5/boost_1_64_0.tar.bz2
+      dest: /home/centos/mothur-1.39.5/boost
+      mode: u+rwx
+
+- name: Install Mothur
+  command: make
+  args:
+    chdir: /home/centos/mothur-1.39.5
+  become: true
+  become_user: root
