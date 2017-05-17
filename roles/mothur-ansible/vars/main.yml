@@ -1,2 +1,5 @@
 ---
 # vars file for ansible-role-mothur
+
+version:
+    latest: 1.39.5
