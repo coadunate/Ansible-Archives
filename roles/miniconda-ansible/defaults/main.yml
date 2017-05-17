@@ -3,9 +3,9 @@
 # -------------------
 
 miniconda_url: >
-  http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+  https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
 
-miniconda_home: '/home/centos/miniconda/bin/bin'
+miniconda_home: '/home/centos/miniconda'
 
 miniconda_environments:
   - name: prod

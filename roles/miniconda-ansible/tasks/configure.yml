@@ -12,7 +12,7 @@
     dest: '{{ miniconda_rcfile }}'
     regexp: ''
     insertafter: EOF
-    line: 'export PATH={{ miniconda_home }}:$PATH'
+    line: 'export PATH={{ miniconda_home }}/bin:$PATH'
     state: present
 
 #  when: miniconda_modify_path

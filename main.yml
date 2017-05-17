@@ -3,7 +3,7 @@
   remote_user: centos
   roles:
 #    - python-ansible/samloh84.python
-    - miniconda-ansible/robinandeer.miniconda
-    - qiime-ansible
+    - miniconda-ansible
+#    - qiime-ansible
   become: true
   become_user: root
