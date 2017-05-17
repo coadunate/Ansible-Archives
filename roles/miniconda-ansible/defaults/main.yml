@@ -5,7 +5,7 @@
 miniconda_url: >
   http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
 
-miniconda_home: '/home/centos/miniconda/bin'
+miniconda_home: '/home/centos/miniconda/bin/bin'
 
 miniconda_environments:
   - name: prod
@@ -13,6 +13,6 @@ miniconda_environments:
     pkgs: 'pip ipython'
 
 miniconda_modify_path: no
-miniconda_rcfile: '~/.bashrc'
+miniconda_rcfile: '/home/centos/.bashrc'
 
 miniconda_add_condarc: yes
