@@ -1,9 +1,9 @@
 ---
-- hosts: ComputeCanadaVM
+- hosts: all
   remote_user: centos
   roles:
-#    - python-ansible/samloh84.python
-    - miniconda-ansible
-#    - qiime-ansible
+    - hdf5-ansible
+
+
   become: true
   become_user: root

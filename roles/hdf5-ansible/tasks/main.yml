@@ -1,44 +1,11 @@
 ---
 # tasks for hd5
 
-- name: Download hd5-{{ version.latest }}  in /usr/src
-  get_url:
-      url: https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-{{ version.latest }}.tar.gz
-      dest: /usr/src/hdf5-{{ version.latest }}.tar.gz
-      mode: u+rwx
-
-- name: Unarchive the hdf5-{{ version.latest }}.tar.gz
-  unarchive:
-      src: /usr/src/hdf5-{{ version.latest }}.tar.gz
-      dest: /usr/src/
-      remote_src: true
-
-- name: Create the Makefile
-  command: ./configure
-  args:
-      chdir: /usr/src/hdf5-{{ version.latest }}/
-
-- name: Run the test suite
-  command: make check
-  args:
-      chdir: /usr/src/hdf5-{{ version.latest }}/
-
-- name: Install hdf5-{{ version.latest }}
-  command: make
-  args:
-      chdir: /usr/src/hdf5-{{ version.latest }}/
-
-- name: Verify installation
-  command: make check-install
-  args:
-      chdir: /usr/src/hdf5-{{ version.latest }}/
-
-- name: Remove hdf5-{{ version.latest }}.tar.gz
-  file:
-      state: absent
-      path: /usr/src/hdf5-{{ version.latest }}.tar.gz
-
-- name: Adds path to h5dump
-  command: echo alias h5dump="/usr/src/hdf5-{{ version.latest }}/tools/h5dump/h5dump" >> ~/.bash_profile
+- name: Install the latest version of hdf5 and related packages 
+  yum: name={{ item }} state=present
   become: true
   become_user: root
+  with_items:
+      - hdf5
+      - hdf5-devel
+      - h5py 

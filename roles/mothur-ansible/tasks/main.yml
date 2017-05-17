@@ -18,16 +18,31 @@
 
 - name: Download Boost
   get_url:
-      url: https://dl.bintray.com/boostorg/release/0.64.0/source/boost_1_64_0.tar.bz2
-      dest: /home/centos/mothur-1.39.5/
+      url: https://bintray.com/boostorg/release/download_file?file_path=1.64.0%2Fsource%2Fboost_1_64_0.tar.bz2 
+      dest: /home/centos/mothur-1.39.5/boost_1_64_0.tar.bz2
       mode: u+rwx
 
 
 - name: Unarchive Boost
-  unarchive:
-      src: /home/centos/mothur-1.39.5/boost_1_64_0.tar.bz2
-      dest: /home/centos/mothur-1.39.5/boost
-      mode: u+rwx
+  command: tar --bzip2 -xf boost_1_64_0.tar.bz2
+  args:
+      chdir: /home/centos/mothur-1.39.5/
+  become: true
+  become_user: root
+
+- name: Rename the boost directory
+  command: mv /home/centos/mothur-1.39.5/boost_1_64_0 /home/centos/mothur-1.39.5/boost_all
+  args:
+      chdir: /home/centos/
+  become: true
+  become_user: root
+
+- name: Move the boost library to mothur-1.39.5 directory
+  command: mv /home/centos/mothur-1.39.5/boost_all/boost /home/centos/mothur-1.39.5/ 
+  args:
+      chdir: /home/centos/
+  become: true
+  become_user: root
 
 - name: Install Mothur
   command: make
