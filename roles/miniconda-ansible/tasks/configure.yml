@@ -12,9 +12,4 @@
     dest: "{{ miniconda_rcfile }}"
     line: export PATH={{ miniconda_home }}:$PATH
     state: present
-#  when: miniconda_modify_path
 
-#- name: create environments
-#  shell: "{{ miniconda_home }}/bin/conda create --yes -q -n {{ item.name }} python={{ item.python_version }} {{ item.pkgs }} creates={{ miniconda_home }}/envs/{{ item.name }}"
-#  when: miniconda_installed | success
-#  with_items: miniconda_environments
