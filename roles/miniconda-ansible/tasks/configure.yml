@@ -9,9 +9,12 @@
 
 - name: add miniconda to the PATH
   lineinfile:
-    dest: "{{ miniconda_rcfile }}"
-    line: export PATH={{ miniconda_home }}:$PATH
+    dest: '{{ miniconda_rcfile }}'
+    regexp: ''
+    insertafter: EOF
+    line: 'export PATH={{ miniconda_home }}:$PATH'
     state: present
+
 #  when: miniconda_modify_path
 
 #- name: create environments
