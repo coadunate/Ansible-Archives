@@ -1,7 +1,7 @@
 ---
 # tasks for hd5
 
-- name: Install the latest version of hdf5 and related packages 
+- name: Install the {{ version.latest }} of hdf5 and related packages 
   yum: name={{ item }} state=present
   become: true
   become_user: root

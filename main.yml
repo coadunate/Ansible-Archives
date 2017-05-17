@@ -2,7 +2,7 @@
 - hosts: all
   remote_user: centos
   roles:
-    - hdf5-ansible
+      - mothur-ansible 
 
 
   become: true

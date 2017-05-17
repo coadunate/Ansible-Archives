@@ -1,9 +1,13 @@
 ---
 # tasks file for ansible-role-mothur
 
-- name: Download Mothur
+- name: Include the variables from var/main.yml
+  include_vars:
+      file: 'vars/main.yml'
+
+- name: Download Mothur {{ version.latest }}
   get_url:
-      url: https://github.com/mothur/mothur/archive/v1.39.5.tar.gz
+      url: https://github.com/mothur/mothur/archive/v{{ version.latest }}.tar.gz
       dest: /home/centos
       mode: u+rwx
 
@@ -11,42 +15,19 @@
   # Unarchieve the folder into some sort of bin
 - name: Unarchive Mothur
   unarchive:
-      src: /home/centos/mothur-1.39.5.tar.gz
-      dest: /home/centos
+      src: /home/centos/mothur-{{ version.latest }}.tar.gz
+      dest: /home/centos/
       remote_src: true
 
 
-- name: Download Boost
-  get_url:
-      url: https://bintray.com/boostorg/release/download_file?file_path=1.64.0%2Fsource%2Fboost_1_64_0.tar.bz2 
-      dest: /home/centos/mothur-1.39.5/boost_1_64_0.tar.bz2
-      mode: u+rwx
-
-
-- name: Unarchive Boost
-  command: tar --bzip2 -xf boost_1_64_0.tar.bz2
-  args:
-      chdir: /home/centos/mothur-1.39.5/
-  become: true
-  become_user: root
-
-- name: Rename the boost directory
-  command: mv /home/centos/mothur-1.39.5/boost_1_64_0 /home/centos/mothur-1.39.5/boost_all
-  args:
-      chdir: /home/centos/
-  become: true
-  become_user: root
-
-- name: Move the boost library to mothur-1.39.5 directory
-  command: mv /home/centos/mothur-1.39.5/boost_all/boost /home/centos/mothur-1.39.5/ 
-  args:
-      chdir: /home/centos/
+- name: Download boost library
+  yum: name=boost-devel state=present
   become: true
   become_user: root
 
 - name: Install Mothur
   command: make
   args:
-    chdir: /home/centos/mothur-1.39.5
+    chdir: /home/centos/mothur-{{ version.latest }}
   become: true
   become_user: root
