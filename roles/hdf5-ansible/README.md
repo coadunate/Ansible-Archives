@@ -13,7 +13,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: coadunate.hd5 }
+         - { role: coadunate.hdf5 }
 
 License
 -------
