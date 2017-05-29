@@ -1,7 +1,7 @@
-Role Name
+HDF5 Ansible Role
 =========
 
-Ansible role for installing the latest version of HD5 
+Ansible role for installing the latest version of HDF5 
 
 Dependencies
 ------------
