@@ -1,4 +1,4 @@
-python
+Python Ansible Role
 =========
 
 Ansible role for downloading Python source archives to control server, then extracting them to the target host.
@@ -17,10 +17,6 @@ Available versions:
     3.5.2
     3.6.0b1
     3.6.0a4
-
-Set the ```prefix``` parameter to install somewhere other than ```opt/python```
-
-        prefix: "opt/python"
         
 
 Change Log
@@ -32,11 +28,9 @@ Change Log
 License
 -------
 
-MIT
+CC-BY
 
-Testing
+Author
 -------
-Run the following command:
-
-        ansible-playbook python/tests/test.yml
+Coadunate
 
