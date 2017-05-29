@@ -2,19 +2,21 @@
 
 Ansible role for installing the latest version of miniconda.
 
-Dependencies
+## Dependencies
 
 coadunate.miniconda
-Example Playbook
+
+## Example Playbook
 
 - hosts: servers
   roles:
      - { role: coadunate.miniconda }
-License
+     
+## License
 
 CC-BY
 
-Author Information
+## Author Information
 
 Coadunate
 
