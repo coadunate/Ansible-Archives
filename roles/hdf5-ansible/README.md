@@ -3,16 +3,6 @@ Role Name
 
 Ansible role for installing the latest version of HD5 
 
-Requirements
-------------
-
-N/a
-
-Role Variables
---------------
-
-N/a
-
 Dependencies
 ------------
 
@@ -20,8 +10,6 @@ Dependencies
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
@@ -35,4 +23,4 @@ CC-BY
 Author Information
 ------------------
 
-N/a
+Coadunate
