@@ -1,4 +1,4 @@
-Miniconda Ansible Role
+## Miniconda Ansible Role
 
 Ansible role for installing the latest version of miniconda.
 
