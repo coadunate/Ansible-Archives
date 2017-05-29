@@ -22,4 +22,4 @@ Coadunate
 ## Credits
 This role was adapted from this miniconda role:
 
-- [robinandeer/ansible-miniconda][deployment]
+- [https://github.com/robinandeer/ansible-miniconda]
