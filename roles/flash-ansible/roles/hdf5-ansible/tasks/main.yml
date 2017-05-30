@@ -1,0 +1,11 @@
+---
+# tasks for hd5
+
+- name: Install the {{ version.latest }} of hdf5 and related packages 
+  yum: name={{ item }} state=present
+  become: true
+  become_user: root
+  with_items:
+      - hdf5
+      - hdf5-devel
+      - h5py 

@@ -1,0 +1,33 @@
+---
+# tasks file for ansible-role-mothur
+
+- name: Include the variables from var/main.yml
+  include_vars:
+      file: 'vars/main.yml'
+
+- name: Download Mothur {{ version.latest }}
+  get_url:
+      url: https://github.com/mothur/mothur/archive/v{{ version.latest }}.tar.gz
+      dest: /home/centos
+      mode: u+rwx
+
+
+  # Unarchieve the folder into some sort of bin
+- name: Unarchive Mothur
+  unarchive:
+      src: /home/centos/mothur-{{ version.latest }}.tar.gz
+      dest: /home/centos/
+      remote_src: true
+
+
+- name: Download boost library
+  yum: name=boost-devel state=present
+  become: true
+  become_user: root
+
+- name: Install Mothur
+  command: make
+  args:
+    chdir: /home/centos/mothur-{{ version.latest }}
+  become: true
+  become_user: root
