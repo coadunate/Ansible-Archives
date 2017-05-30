@@ -1,0 +1,32 @@
+---
+# tasks file for ansible-role-seqtk
+
+
+- name: Make seqtk directory
+  file:
+      path: /home/centos/seqtk
+      state: directory
+      mode: 0777
+
+- name: Clone the seqtk from lh3/seqtk github repository
+  git:
+      repo: https://github.com/lh3/seqtk.git
+      dest: /home/centos/seqtk
+      clone: yes
+      update: yes
+
+
+
+
+- name: Install seqtk
+  command: make
+  args:
+      chdir: /home/centos/seqtk
+
+- name: Add seqtk to the path
+  lineinfile:
+      dest: '/home/centos/.bashrc'
+      regexp: ''
+      insertafter: EOF
+      line: 'export PATH=/home/centos/seqtk/:$PATH'
+      state: present
