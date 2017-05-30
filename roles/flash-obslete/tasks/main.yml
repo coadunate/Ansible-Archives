@@ -1,0 +1,30 @@
+---
+# tasks file for ansible-role-flash
+
+- name: Check to see if zlib-devel is installed
+  yum: name={{ item }} state=present
+  become: true
+  become_user: root
+  with_items:
+      - zlib-devel
+
+- name: Download and unarchive lastest version of flash
+  unarchive:
+      src: https://downloads.sourceforge.net/project/flashpage/FLASH-1.2.11.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fflashpage%2Ffiles%2F&ts=1496167694&use_mirror=gigenet 
+      dest: /home/centos
+      remote_src: true
+
+
+
+- name: Install latest flash
+  command: make
+  args: 
+    chdir: /home/centos/FLASH-1.2.11
+
+- name: Add FlasH to Path
+  lineinfile:
+      dest: '/home/centos/.bashrc'
+      regexp: ''
+      insertafter: EOF
+      line: 'export PATH=/home/centos/FLASH-1.2.11/:$PATH'
+      state: present

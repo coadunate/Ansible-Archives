@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Coadunate Organization
+  company: Coadunate
+  license: CC-BY
+  min_ansible_version: 1.2
+  
+  platforms:
+    - name: EPEL
+      versions:
+       - all
+  
+  galaxy_tags:
+      - build
+      - development
+      - gcc
+
+dependencies: []
