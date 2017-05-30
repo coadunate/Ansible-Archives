@@ -1,17 +1,7 @@
-Role Name
+Ansible Role Flash
 =========
 
 This role installs the latest version of Flash software
-
-Requirements
-------------
-
-N/a
-
-Role Variables
---------------
-
-N/a
 
 Dependencies
 ------------
@@ -34,5 +24,4 @@ CC-BY
 
 Author Information
 ------------------
-
-N/a
+Coadunate
