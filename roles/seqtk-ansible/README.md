@@ -1,17 +1,7 @@
-Role Name
+Seqtk Ansible Role
 =========
 
-This role installs seqtk tool for terminal
-
-Requirements
-------------
-
-N/a
-
-Role Variables
---------------
-
-N/a
+This role installs seqtk tool for terminal.
 
 Dependencies
 ------------
@@ -20,8 +10,6 @@ Dependencies
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
@@ -35,4 +23,4 @@ CC-BY
 Author Information
 ------------------
 
-N/a
+Coadunate
