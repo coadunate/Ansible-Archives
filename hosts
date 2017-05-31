@@ -1,0 +1,4 @@
+[ComputeCanadaVM]
+ComputeCanadaVM-server ansible_ssh_host=206.167.181.77 ansible_ssh_private_key_file=/Users/tannerdowhy/Desktop/ComputeCanadaResources/ComputeCanadaCloud/ccKeyPair.key
+
+

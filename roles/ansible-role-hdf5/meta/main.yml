@@ -13,5 +13,5 @@ galaxy_info:
   galaxy_tags:
       - hdf5
 
-  dependencies: 
-    - coadunate.epel
+#  dependencies: 
+#    - coadunate.epel

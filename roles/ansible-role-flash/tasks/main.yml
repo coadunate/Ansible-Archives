@@ -14,8 +14,6 @@
       dest: /home/centos
       remote_src: true
 
-
-
 - name: Install latest flash
   command: make
   args: 

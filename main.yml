@@ -1,0 +1,17 @@
+
+---
+- hosts: all
+  remote_user: centos
+  roles:
+#    - devtools-ansible
+#    - python-ansible
+#    - epel-ansible
+#    - hdf5-ansible
+#    - miniconda-ansible
+#    - mothur-ansible
+#    - qiime-ansible
+    - flash-ansible
+#    - seqtk-ansible
+
+  become: true
+  become_user: root
