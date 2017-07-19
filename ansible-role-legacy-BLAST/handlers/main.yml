@@ -1,0 +1,7 @@
+---
+# handlers file for ansible-role-legacy-BLAST
+
+- name: remove archived file
+  file:
+    path: "{{ ansible_env.PWD }}/software/blast-2.2.22-x64-linux.tar.gz"
+    state: absent

@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Coadunate Organization
+  description: N/a 
+  company: Coadunate
+  license: CC-BY  
+  min_ansible_version: 1.2
+  
+  platforms:
+  - name: CentOS 
+    versions:
+     - v7
+
+  galaxy_tags:
+      - hdf5
+
+  dependencies: 
+      - coadunate.epel

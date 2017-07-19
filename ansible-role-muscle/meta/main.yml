@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Coadunate Organization
+  company: Coadunate
+  license: CC-BY
+  min_ansible_version: 1.2
+
+  # platforms:
+  # - name: Fedora
+  #   versions:
+  #   - all
+  # - name: SomePlatform
+  #   versions:
+  #   - all
+
+  galaxy_tags: []
+
+dependencies:
+  - coadunate.devtools

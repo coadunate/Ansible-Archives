@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Coadunate Organization
+  description: >
+    Install Miniconda
+  license:
+  min_ansible_version: 1.4
+  license: CC-BY
+  platforms:
+   - name: Enterprise Linux
+
+  categories:
+    - packaging
+    - system
+

@@ -1,0 +1,5 @@
+---
+# defaults file for ansible-role-flash
+
+home_path: '{{ ansible_env.HOME }}'
+flash_path: '{{ home_path }}/FLASH-1.2.11'

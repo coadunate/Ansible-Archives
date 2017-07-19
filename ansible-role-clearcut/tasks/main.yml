@@ -1,0 +1,24 @@
+---
+# tasks file for ansible-role-clearcut
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download Clearcut"
+  get_url: 
+    url: http://www.mothur.org/w/images/9/91/Clearcut.source.zip
+    dest: "{{ ansible_env.PWD }}/software/Clearcut.source.zip"
+
+- name: "Decompress Download"
+  unarchive:
+    src: "{{ ansible_env.PWD }}/software/Clearcut.source.zip"
+    dest: "{{ ansible_env.PWD }}/software"
+    remote_src: True
+  notify:
+    - remove archived file
+
+- name: "Execute Makefile"
+  command: make -C {{ ansible_env.PWD }}/software/clearcut
+
+- name: "Add clearcut to .bashrc"
+  shell: echo export PATH={{ ansible_env.PWD }}/software/clearcut:$PATH >> {{ ansible_env.PWD }}/.bashrc

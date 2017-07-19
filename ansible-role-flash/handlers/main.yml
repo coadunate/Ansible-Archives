@@ -1,0 +1,6 @@
+---
+# handlers file for ansible-role-flash
+
+
+- name: remove the flash tarball used for installation
+  file: name="{{ home_path }}/FLASH-1.2.11.tar.gz state=absent

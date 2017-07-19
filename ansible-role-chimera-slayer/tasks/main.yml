@@ -1,0 +1,21 @@
+---
+# tasks file for ansible-role-chimera-slayer
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download ChimeraSlayer"
+  get_url:
+    url: https://downloads.sourceforge.net/project/microbiomeutil/microbiomeutil-r20110519.tgz
+    dest: "{{ ansible_env.PWD }}/software/microbiomeutil-r20110519.tgz"
+
+- name: "Unarchive Download"
+  unarchive:
+    src: "{{ ansible_env.PWD }}/software/microbiomeutil-r20110519.tgz"
+    dest: "{{ ansible_env.PWD }}/software/"
+    remote_src: True
+  notify:
+    - remove archived file
+
+- name: "Add Chimera Slayer to .bashrc"
+  shell: echo export PATH={{ ansible_env.PWD }}/software/microbiomeutil-r20110519/ChimeraSlayer:$PATH >> {{ ansible_env.PWD }}/.bashrc

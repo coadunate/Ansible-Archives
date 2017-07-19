@@ -1,0 +1,35 @@
+---
+# tasks file for ansible-role-seqtk
+
+
+- name: Make seqtk directory
+  file:
+      path: "{{ seqtk_path }}"
+      state: directory
+      mode: 0777
+
+- name: Clone the seqtk from lh3/seqtk github repository
+  git:
+      repo: https://github.com/lh3/seqtk.git
+      dest: "{{ seqtk_path }}"
+      clone: yes
+      update: yes
+
+- name: Install zlib for gcc
+  yum:
+      name: zlib-devel
+      state: present
+
+
+- name: Install seqtk
+  command: make
+  args:
+      chdir: "{{ seqtk_path }}"
+
+- name: "Add seqtk to the path: {{ home_path }}"
+  lineinfile:
+      dest: "{{ home_path }}/.bashrc"
+      regexp: ''
+      insertafter: EOF
+      line: 'export PATH={{ seqtk_path }}/:$PATH'
+      state: present

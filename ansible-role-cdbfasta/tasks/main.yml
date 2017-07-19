@@ -1,0 +1,28 @@
+---
+# tasks file for ansible-role-cdbfasta
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download cdbfasta"
+  get_url:
+    url: ftp://occams.dfci.harvard.edu/pub/bio/tgi/software/cdbfasta/cdbfasta.tar.gz
+    dest: "{{ ansible_env.PWD }}/software/cdbfasta.tar.gz"
+
+- name: "Unarchive Download"
+  unarchive:
+    src: "{{ ansible_env.PWD }}/software/cdbfasta.tar.gz"
+    dest: "{{ ansible_env.PWD }}/software"
+    remote_src: True
+  notify:
+    - remove archived file
+
+- name: "Execute Makefile"
+  command: make -C {{ ansible_env.PWD }}/software/cdbfasta
+
+- name: "Add cdbfasta to .bashrc"
+  lineinfile:
+    path: "{{ ansible_env.PWD }}/.bashrc"
+    regexp: 'export PATH=*'
+    state: present
+    line: 'export PATH=$PATH:$HOME/software/cdbfasta'

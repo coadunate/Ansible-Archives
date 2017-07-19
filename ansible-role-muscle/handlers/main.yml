@@ -1,0 +1,7 @@
+---
+# handlers file for ansible-role-muscle
+
+- name: remove archived file
+  file:
+    path: "{{ ansible_env.PWD }}/software/muscle3.8.31_i86linux64.tar.gz"
+    state: absent

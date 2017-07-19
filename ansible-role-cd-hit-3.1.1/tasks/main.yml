@@ -1,0 +1,24 @@
+---
+# tasks file for ansible-role-cd-hit-3.1.1
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download cd-hit-3.1.1"
+  get_url:
+    url: http://www.bioinformatics.org/download/cd-hit/cd-hit-2007-0131.tar.gz
+    dest: "{{ ansible_env.PWD }}/software/cd-hit-2007-0131.tar.gz"
+
+- name: "Unarchive cd-hit-3.1.1"
+  unarchive:
+    src: "{{ ansible_env.PWD }}/software/cd-hit-2007-0131.tar.gz"
+    dest: "{{ ansible_env.PWD }}/software/"
+    remote_src: True
+  notify: 
+    - remove archived file
+
+- name: "Execute Makefile"
+  command: make -C {{ ansible_env.PWD }}/software/cd-hit
+  
+- name: "Add cd-hit to .bashrc
+  shell: echo export PATH={{ ansible_env.PWD }}/software/cd-hit:$PATH >> {{ ansible_env.PWD }}/.bashrc
