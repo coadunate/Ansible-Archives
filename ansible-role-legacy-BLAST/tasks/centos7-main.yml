@@ -1,0 +1,20 @@
+---
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download Legacy BLAST"
+  get_url:
+    url: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy/2.2.22/blast-2.2.22-x64-linux.tar.gz
+    dest: "{{ ansible_env.PWD }}/software/blast-2.2.22-x64-linux.tar.gz"
+
+- name: "Unarchive download"
+  unarchive:
+    src:  "{{ ansible_env.PWD }}/software/blast-2.2.22-x64-linux.tar.gz"
+    dest: "{{ ansible_env.PWD }}/software/"
+    remote_src: True
+  notify:
+    - remove archived file
+
+- name: "Add Legacy BLAST to .bashrc"
+  shell: echo export PATH={{ ansible_env.PWD }}/software/blast-2.2.22/bin:$PATH >> {{ ansible_env.PWD }}/.bashrc

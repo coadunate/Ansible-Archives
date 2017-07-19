@@ -1,0 +1,7 @@
+---
+# handlers file for ansible-role-clearcut
+
+- name: remove archived file
+  file:
+    path: "{{ ansible_env.PWD }}/software/Clearcut.source.zip"
+    state: absent

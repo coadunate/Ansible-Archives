@@ -1,0 +1,14 @@
+---
+# tasks file for ansible-role-seqtk
+
+
+- name: Install latest biopython library
+  pip:
+      name: biopython
+      state: latest
+
+- name: Install h5py
+  pip:
+      name: h5py
+      state: latest
+

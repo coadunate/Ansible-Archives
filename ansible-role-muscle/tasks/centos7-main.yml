@@ -1,0 +1,21 @@
+---
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download MUSCLE"
+  get_url:
+    url: http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux64.tar.gz
+    dest: "{{ ansible_env.PWD }}/software/muscle3.8.31_i86linux64.tar.gz"
+    remote_src: True
+
+- name: "Unarchive Download"
+  unarchive:
+    src: "{{ ansible_env.PWD }}/software/muscle3.8.31_i86linux64.tar.gz"
+    dest: "{{ ansible_env.PWD }}/software/"
+    remote_src: True
+  notify:
+    - remove archived file
+
+- name: "Add Muscle to .bashrc"
+  shell: echo export PATH={{ ansible_env.PWD }}/software:$PATH >> {{ ansible_env.PWD }}/.bashrc

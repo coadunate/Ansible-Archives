@@ -1,0 +1,5 @@
+---
+# tasks file for ansible-role-infernal
+
+- include: centos7-main.yml
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"

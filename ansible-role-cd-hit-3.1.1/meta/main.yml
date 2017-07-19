@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Coadunate Organization
+  company: Coadunate
+  license: CC-BY
+  min_ansible_version: 1.2
+
+  platforms:
+    - name: EL
+      versions:
+        - all
+
+
+dependencies:
+  - coadunate.epel
+  - coadunate.devtools

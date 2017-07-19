@@ -1,0 +1,6 @@
+---
+
+# Provisioning steps
+
+- include: install.yml
+- include: configure.yml

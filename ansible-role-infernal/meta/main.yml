@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Coadunate Organization
+  company: Coadunate
+  license: CC-BY
+  min_ansible_version: 1.2
+
+  # platforms:
+  # - name: Fedora
+  #   versions:
+  #   - all
+
+  galaxy_tags: 
+    - infernal
+    - bioinformatics
+
+dependencies: 
+  - coadunate.devtools

@@ -1,0 +1,21 @@
+---
+# tasks file for ansible-role-rdp-classifier
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download rdp classifier"
+  get_url: 
+    url: https://downloads.sourceforge.net/project/rdp-classifier/rdp-classifier/rdp_classifier_2.2.zip
+    dest: "{{ ansible_env.PWD }}/software/rdp_classifier_2.2.zip"
+
+- name: "Decompress rdp classifier"
+  unarchive: 
+    src: "{{ ansible_env.PWD }}/software/rdp_classifier_2.2.zip"
+    dest: "{{ ansible_env.PWD }}/software/"
+    remote_src: True
+  notify:
+    - remove archived file
+
+- name: "Add rdp classifier to .bashrc"
+  shell: echo export RDP_JAR_PATH={{ ansible_env.PWD }}/software/rdp_classifier_2.2/rdp_classifier-2.2.jar >> {{ ansible_env.PWD }}/.bashrc

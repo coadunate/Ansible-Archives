@@ -1,0 +1,7 @@
+---
+# handlers file for ansible-role-mothur
+
+- name: remove archived file
+  file:
+    path: "{{ ansible_env.PWD }}/software/v{{ version.latest }}.tar.gz"
+    state: absent

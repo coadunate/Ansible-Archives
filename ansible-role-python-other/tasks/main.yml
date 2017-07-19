@@ -1,0 +1,53 @@
+---
+# tasks for python
+
+- name: Install compilers and build tools
+  yum:
+      name: "@Development tools"
+      state: present
+  become: true
+  become_user: root
+
+- name: Install required libraries to enable all python features
+  yum: name={{ item }} state=present
+  become: true
+  become_user: root
+  with_items:
+      - zlib-devel
+      - bzip2-devel
+      - openssl-devel
+      - ncurses-devel
+      - sqlite-devel
+      - readline-devel
+      - tk-devel
+      - gdbm-devel
+      - libpcap-devel
+      - xz-devel
+      - expat-devel
+
+- name: Download Python-{{ version.latest }}.tgz file at /usr/src
+  get_url:
+      url: https://www.python.org/ftp/python/{{  version.latest }}/Python-{{  version.latest }}.tgz
+      dest: /usr/src/Python-{{  version.latest }}.tgz
+      mode: u+rwx
+
+- name: Unarchive the Python-{{  version.latest }}.tgz
+  unarchive:
+    src: /usr/src/Python-{{  version.latest }}.tgz
+    dest: /usr/src/
+    remote_src: true
+
+- name: Create the Makefile
+  command: ./configure --user
+  args:
+    chdir: /usr/src/Python-{{  version.latest }}/
+
+- name: Install Python-{{  version.latest }}
+  command: make altinstall --user
+  args:
+    chdir: /usr/src/Python-{{  version.latest }}/
+
+- name: Remove Python-{{  version.latest }}.tgz
+  file:
+    state: absent
+    path: /usr/src/Python-{{  version.latest }}.tgz

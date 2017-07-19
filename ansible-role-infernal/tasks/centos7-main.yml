@@ -1,0 +1,29 @@
+---
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: "Download Infernal"
+  get_url:
+    url: http://eddylab.org/infernal/infernal-1.1.2-linux-intel-gcc.tar.gz
+    dest: "{{ ansible_env.PWD }}/software"
+
+- name: "Unarchive Download"
+  unarchive: 
+    src: "{{ ansible_env.PWD }}/software/infernal-1.1.2-linux-intel-gcc.tar.gz"
+    dest: "{{ ansible_env.PWD }}/software"
+    remote_src: True
+  notify:
+    - remove archived file
+
+- name: "Configure Infernal"
+  command:  ./configure
+  args:
+    chdir: "{{ ansible_env.PWD }}/software/infernal-1.1.2-linux-intel-gcc"
+
+- name: "Execute Makefile"
+  command: make -C {{ ansible_env.PWD }}/software/infernal-1.1.2-linux-intel-gcc
+
+- name: Add infernal to .bashrc
+  shell: echo export PATH={{ ansible_env.PWD }}/software/infernal-1.1.2-linux-intel-gcc:$PATH >> {{ ansible_env.PWD }}/.bashrc
+

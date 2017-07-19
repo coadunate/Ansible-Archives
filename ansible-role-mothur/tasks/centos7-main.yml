@@ -1,0 +1,40 @@
+---
+
+# tasks file for ansible-role-mothur
+
+- name: "Ensure software folder exists"
+  file: path={{ ansible_env.PWD }}/software state=directory mode=0777
+
+- name: Include the variables from var/main.yml
+  include_vars:
+      file: 'vars/main.yml'
+
+- name: Download Mothur {{ version.latest }}
+  get_url:
+      url: https://github.com/mothur/mothur/archive/v{{ version.latest }}.tar.gz
+      dest: "{{ ansible_env.PWD }}/software/mothur.tar.gz"
+      mode: u+rwx
+
+- name: Unarchive Mothur
+  unarchive:
+      src: "{{ ansible_env.PWD }}/software/mothur.tar.gz"
+      dest: "{{ ansible_env.PWD }}/software/"
+      remote_src: True
+
+- name: Download boost library
+  yum: name=boost-devel state=present
+  become: true
+  become_user: root
+
+- name: Install readline-devel
+  yum:
+    name: readline-devel
+    state: present
+  become: true
+  become_user: root
+
+- name: Install Mothur
+  command: make -C {{ ansible_env.PWD }}/software/mothur-{{ version.latest }} 
+
+- name: Add mothur to .bashrc
+  shell: echo export PATH={{ ansible_env.PWD }}/software/mothur-1.39.5:$PATH >> {{ ansible_env.PWD }}/.bashrc

@@ -1,0 +1,6 @@
+---
+# defaults file for ansible-role-seqtk
+
+
+home_path: "{{ ansible_env.PWD }}"
+biopython_path: "{{ home_path }}/biopython"

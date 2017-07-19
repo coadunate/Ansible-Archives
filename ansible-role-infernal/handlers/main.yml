@@ -1,0 +1,7 @@
+---
+# handlers file for ansible-role-infernal
+
+- name: remove archived file
+  file:
+    path: "{{ ansible_env.PWD }}/software/infernal-1.1.2-linux-intel-gcc.tar.gz"
+    state: absent
