@@ -1,7 +1,0 @@
----
-# Main Configuration
-# ------------------
-
-miniconda_home: '/home/centos/miniconda/bin'
-
-env_home: '/home/centos/miniconda/envs'

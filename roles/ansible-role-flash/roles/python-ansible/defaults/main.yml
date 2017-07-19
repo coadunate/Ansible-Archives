@@ -1,3 +1,0 @@
-python_version: 3.5.2
-prefix: "/opt/python"
-tmp_prefix: "{{ ansible_env.HOME }}/tmp/python"
