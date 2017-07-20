@@ -1,0 +1,29 @@
+galaxy_info:
+  author: coadunate
+  description: Role that downloads a selection of recommended ontologies for theme 3.2 of P2IRC group. 
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Plants
+  - Theme 3.2
+  - Plant Imaging
+  - Phenotyping
+  - Data Analysis
+
+dependencies:
+- { role: "coadunate.pato" }
+- { role: "coadunate.planteomeontologies" }
+- { role: "coadunate.ontology_of_bio_attributes" }
+- { role: "coadunate.units_of_measurement_ontology" }
+- { role: "coadunate.anatomical_entity_ontology" }
+- { role: "coadunate.plant_phenology_ontology" }
+- { role: "coadunate.biological_imaging_methods_ontology" }
+- { role: "coadunate.evidence_and_conclusion_ontology" }
+

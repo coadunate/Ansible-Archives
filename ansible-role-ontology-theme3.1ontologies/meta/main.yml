@@ -1,0 +1,49 @@
+galaxy_info:
+  author: coadunate
+  description: Role that downloads a selection of recommended ontologies for theme 3.1 of P2IRC group. 
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Plants
+  - Theme 3.1
+  - P2IRC Cloud
+  - Phenotypes
+  - Genotype
+  - Cloud Computing
+  - Environment
+  - Microbes
+  - Agronomy
+
+dependencies:
+- { role: "coadunate.pato" }
+- { role: "coadunate.ontology_of_bio_attributes" }
+- { role: "coadunate.units_of_measurement_ontology" }
+- { role: "coadunate.clinical_measurement_ontology"}
+- { role: "coadunate.measurement_method_ontology"}
+- { role: "coadunate.anatomical_entity_ontology"}
+- { role: "coadunate.biological_spatial_ontology"}
+- { role: "coadunate.planteomeontologies"}
+- { role: "coadunate.plant_phenology_ontology"}
+- { role: "coadunate.agronomy_ontology"}
+- { role: "coadunate.genotype_ontology"}
+- { role: "coadunate.the_gene_ontology"}
+- { role: "coadunate.genetic_interval_ontology"}
+- { role: "coadunate.ontology_microbial_phenotype"}
+- { role: "coadunate.host_microbe_ontology"}
+- { role: "coadunate.software_ontology"}
+- { role: "coadunate.stat_methods_ontology"}
+- { role: "coadunate.sequence_types_and_features_ontology"}
+- { role: "coadunate.systems_biology_ontology"}
+- { role: "coadunate.adverse_events_ontology"}
+- { role: "coadunate.biological_imaging_methods_ontology"}
+- { role: "coadunate.kinetic_sim_alg_ontology"}
+- { role: "coadunate.mathematical_modeling_ontology"}
+- { role: "coadunate.evidence_and_conclusion_ontology"}
+- { role: "coadunate.data_use_ontology"}

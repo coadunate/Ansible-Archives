@@ -1,0 +1,5 @@
+---
+- name: download the ontology for genetic interval
+  get_url: 
+    url: http://purl.obolibrary.org/obo/ogi.owl
+    dest: "{{ ansible_env.HOME }}"

@@ -1,0 +1,5 @@
+---
+- name: download the mathematical modeling ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/mamo.owl
+    dest: "{{ ansible_env.HOME }}"

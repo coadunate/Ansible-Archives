@@ -1,0 +1,5 @@
+---
+- name: download the software ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/swo.owl
+    dest: "{{ ansible_env.HOME }}"

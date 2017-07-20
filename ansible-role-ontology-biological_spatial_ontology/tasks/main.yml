@@ -1,0 +1,5 @@
+---
+- name: download biological spatial ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/bspo.owl 
+    dest: "{{ ansible_env.HOME }}"

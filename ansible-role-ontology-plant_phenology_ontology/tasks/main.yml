@@ -1,0 +1,5 @@
+---
+- name: download the plant phenology ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/ppo.owl
+    dest: "{{ ansible_env.HOME }}"

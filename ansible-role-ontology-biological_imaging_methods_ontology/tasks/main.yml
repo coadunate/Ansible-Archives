@@ -1,0 +1,5 @@
+---
+- name: download the biological imaging methods ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/fbbi.owl
+    dest: "{{ ansible_env.HOME }}"

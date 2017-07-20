@@ -1,0 +1,6 @@
+---
+- name: download ontologies 
+  get_url: 
+    url: "{{item.url}}" 
+    dest: "{{ ansible_env.HOME }}/{{item.name}}"
+  with_items: "{{ url_list }}"

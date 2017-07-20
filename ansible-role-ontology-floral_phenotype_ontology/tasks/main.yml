@@ -1,0 +1,5 @@
+---
+- name: download the floral phenotype ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/flopo.owl
+    dest: "{{ ansible_env.HOME }}"

@@ -1,0 +1,5 @@
+---
+- name: download the plant ontology
+  get_url: 
+    url: https://raw.githubusercontent.com/Planteome/plant-ontology/master/po.owl
+    dest: "{{ ansible_env.HOME }}"

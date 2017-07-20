@@ -1,0 +1,5 @@
+---
+- name: download the phenotype and trait ontology
+  get_url: 
+    url: https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl
+    dest: "{{ ansible_env.HOME }}"

@@ -1,0 +1,5 @@
+---
+- name: download the Ontology of Host-Microbe Interactions
+  get_url: 
+    url: http://purl.obolibrary.org/obo/ohmi.owl
+    dest: "{{ ansible_env.HOME }}"

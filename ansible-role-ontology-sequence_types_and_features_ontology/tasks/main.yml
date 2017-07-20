@@ -1,0 +1,5 @@
+---
+- name: download the sequence types and features ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/so.owl
+    dest: "{{ ansible_env.HOME }}"

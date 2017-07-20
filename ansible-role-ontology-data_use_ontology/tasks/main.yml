@@ -1,0 +1,5 @@
+---
+- name: download the data use ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/duo.owl
+    dest: "{{ ansible_env.HOME }}"
