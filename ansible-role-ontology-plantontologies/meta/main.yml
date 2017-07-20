@@ -1,0 +1,18 @@
+galaxy_info:
+  author: coadunate
+  description: role to download some useful ontologies
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Phenotype
+  - Genotype 
+  - Plants 
+  - P2IRC 
+

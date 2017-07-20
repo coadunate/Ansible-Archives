@@ -1,0 +1,5 @@
+---
+- name: download protein ontology
+  get_url: 
+    url: ftp://ftp.proconsortium.org/databases/ontology/pro_obo/pro_reasoned.owl
+    dest: "{{ ansible_env.HOME }}"

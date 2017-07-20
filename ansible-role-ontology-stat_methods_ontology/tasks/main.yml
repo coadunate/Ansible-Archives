@@ -1,0 +1,5 @@
+---
+- name: download the statistical methods ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/stato.owl
+    dest: "{{ ansible_env.HOME }}"

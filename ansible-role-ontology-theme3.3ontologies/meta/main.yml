@@ -1,0 +1,36 @@
+galaxy_info:
+  author: coadunate
+  description: Role that downloads a selection of recommended ontologies for theme 3.3 of P2IRC group. 
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Plants
+  - Theme 3.3
+  - GWAS
+  - Genotype and Environment to Phenotype
+  - GE2P
+  - Phenotyping
+  - Genotyping
+
+dependencies:
+- { role: "coadunate.pato" }
+- { role: "coadunate.the_gene_ontology" }
+- { role: "coadunate.planteomeontologies" }
+- { role: "coadunate.protein_ontology" }
+- { role: "coadunate.plant_phenology_ontology" }
+- { role: "coadunate.genotype_ontology" }
+- { role: "coadunate.chebi_ontology" }
+- { role: "coadunate.floral_phenotype_ontology" }
+- { role: "coadunate.units_of_measurement_ontology" }
+- { role: "coadunate.clinical_measurement_ontology" }
+- { role: "coadunate.anatomical_entity_ontology" }
+- { role: "coadunate.biological_spatial_ontology" }
+- { role: "coadunate.agronomy_ontology" }
+- { role: "coadunate.genetic_interval_ontology" }

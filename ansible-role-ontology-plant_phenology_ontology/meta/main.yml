@@ -1,0 +1,15 @@
+galaxy_info:
+  author: coadunate
+  description: Role to download the plant phenology ontology
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Plants
+  - Phenology

@@ -1,0 +1,22 @@
+galaxy_info:
+  author: coadunate
+  description: Role to download all completed planteome ontologies
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Planteome
+  - Plant trait
+  - Plant environment
+  - Plant
+
+dependencies:
+- { role: "coadunate.ontology-the_plant_ontology" }
+- { role: "coadunate.ontology-plant_environment_ontology" }
+- { role: "coadunate.ontology-plant_trait_ontology" }

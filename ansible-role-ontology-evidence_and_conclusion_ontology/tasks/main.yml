@@ -1,0 +1,5 @@
+---
+- name: download the evidence and conclusion ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/eco.owl
+    dest: "{{ ansible_env.HOME }}"

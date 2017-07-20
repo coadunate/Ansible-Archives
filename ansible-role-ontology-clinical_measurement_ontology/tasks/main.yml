@@ -1,0 +1,5 @@
+---
+- name: download clinical measurement ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/cmo.owl
+    dest: "{{ ansible_env.HOME }}"

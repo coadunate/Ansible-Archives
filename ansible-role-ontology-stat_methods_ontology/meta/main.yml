@@ -1,0 +1,16 @@
+galaxy_info:
+  author: coadunate
+  description: Role to download the statistical methods ontology
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Statistics
+  - Biomedical science domain
+  - Statistical methods

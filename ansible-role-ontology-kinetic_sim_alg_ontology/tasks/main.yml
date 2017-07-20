@@ -1,0 +1,5 @@
+---
+- name: download the kinetic simulation algorithm ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/kisao.owl
+    dest: "{{ ansible_env.HOME }}"

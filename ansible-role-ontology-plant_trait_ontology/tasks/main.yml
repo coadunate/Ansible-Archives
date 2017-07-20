@@ -1,0 +1,5 @@
+---
+- name: download the plant trait ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/to.owl
+    dest: "{{ ansible_env.HOME }}"

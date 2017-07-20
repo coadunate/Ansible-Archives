@@ -1,0 +1,5 @@
+---
+- name: download the measurement method ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/mmo.owl
+    dest: "{{ ansible_env.HOME }}"

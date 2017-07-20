@@ -1,0 +1,5 @@
+---
+- name: download genotype ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/geno.owl
+    dest: "{{ ansible_env.HOME }}"

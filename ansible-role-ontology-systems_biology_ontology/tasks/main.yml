@@ -1,0 +1,5 @@
+---
+- name: download the systems biology ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/sbo.owl
+    dest: "{{ ansible_env.HOME }}"

@@ -1,0 +1,5 @@
+---
+- name: download the Ontology of Biological Attributes
+  get_url: 
+    url: http://purl.obolibrary.org/obo/oba.owl
+    dest: "{{ ansible_env.HOME }}"

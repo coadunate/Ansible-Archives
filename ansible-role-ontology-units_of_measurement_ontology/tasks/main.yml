@@ -1,0 +1,5 @@
+---
+- name: download units of measurement ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/uo.owl
+    dest: "{{ ansible_env.HOME }}"

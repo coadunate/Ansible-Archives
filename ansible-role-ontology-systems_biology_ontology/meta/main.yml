@@ -1,0 +1,16 @@
+galaxy_info:
+  author: coadunate
+  description: Role to download the systems biology ontology
+
+  license: CC-BY
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: all  
+
+  galaxy_tags: 
+  - Ontology 
+  - Systems biology
+  - Biology
+  - Computational modeling

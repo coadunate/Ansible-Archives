@@ -1,0 +1,5 @@
+---
+- name: download the plant environment ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/eo.owl
+    dest: "{{ ansible_env.HOME }}"

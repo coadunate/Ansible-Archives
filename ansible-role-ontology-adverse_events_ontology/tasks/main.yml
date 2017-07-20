@@ -1,0 +1,5 @@
+---
+- name: download the ontology of adverse events
+  get_url: 
+    url: http://purl.obolibrary.org/obo/oae.owl
+    dest: "{{ ansible_env.HOME }}"

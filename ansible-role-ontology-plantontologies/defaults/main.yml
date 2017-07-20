@@ -1,0 +1,21 @@
+---
+url_list: 
+- { url: "https://raw.githubusercontent.com/Planteome/plant-ontology/master/po.obo", name: "po.obo" }
+- { url: "https://raw.githubusercontent.com/Planteome/plant-ontology/master/po.owl", name: "po.owl" }
+- { url: "http://geneontology.org/ontology/go.obo", name: "go.obo" }
+- { url: "http://purl.obolibrary.org/obo/go.owl", name: "go.owl" }
+- { url: "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.obo", name: "pato.obo" }
+- { url: "https://raw.githubusercontent.com/pato-ontology/pato/master/pato.owl", name: "pato.owl" }
+- { url: "http://purl.obolibrary.org/obo/ppo.owl", name: "ppo.owl" }
+- { url: "http://purl.obolibrary.org/obo/geno.owl", name: "geno.owl" }
+- { url: "http://purl.obolibrary.org/obo/flopo.owl", name: "flopo.owl" }
+- { url: "http://purl.obolibrary.org/obo/cmo.obo", name: "cmo.obo" }
+- { url: "http://purl.obolibrary.org/obo/cmo.owl", name: "cmo.owl" }
+- { url: "http://purl.obolibrary.org/obo/aeo.owl", name: "aeo.owl" }
+- { url: "http://purl.obolibrary.org/obo/bspo.owl", name: "bspo.owl" }
+- { url: "http://purl.obolibrary.org/obo/caro.owl", name: "caro.owl" }
+- { url: "http://purl.obolibrary.org/obo/agro.owl", name: "agro.owl" }
+- { url: "ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.obo", name: "chebi.obo" }
+- { url: "ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.owl", name: "chebi.owl" }
+- { url: "ftp://ftp.proconsortium.org/databases/ontology/pro_obo/pro_reasoned.obo", name: "pr.obo" }
+- { url: "ftp://ftp.proconsortium.org/databases/ontology/pro_obo/pro_reasoned.owl", name: "pr.owl" }

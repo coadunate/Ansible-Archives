@@ -1,0 +1,5 @@
+---
+- name: download the anatomical entity ontology
+  get_url: 
+    url: http://purl.obolibrary.org/obo/aeo.owl
+    dest: "{{ ansible_env.HOME }}"
